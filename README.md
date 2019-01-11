@@ -1,20 +1,22 @@
 # Writing to a Slack Channel - Node.js Edition
-In this article, we’ll be creating a simple Node.js application that can write to a Slack channel. If you haven’t completed the first tutorial in this series where you learn about Slack’s APIs and create your first workspace and application, please do that first. (add link when posted)
+**Note**: This tutorial is part of CodeProject's [Slack API Challenge](https://www.codeproject.com/Competitions/1069/Slack-API-Challenge.aspx). 
 
-To keep things nice and simple, we’re going to be using Slack’s Web API. This means that all we’ll need to be able to do to write to a Slack channel is make HTTP POST requests. Since this functionality is built into Node’s standard library, creating our app will be quick and easy.
+ In this article, we'll be creating a simple Node.js application that can write to a Slack channel. If you haven't completed [the first tutorial in this series](https://www.codeproject.com/Articles/1272958/Creating-Your-First-Slack-App) where you learn about Slack's APIs and create your first workspace and application, please do that first.
+
+ To keep things nice and simple, we're going to be using Slack's Web API. So all we need to do to write to a Slack channel is make HTTP POST requests. Since this functionality is built into Node's standard library, creating our app will be quick and easy.
 
 ## Getting Started
-If you don’t already have it installed, you can grab a copy of it from the Node.js website. I recommend the latest LTS release, which at the time of writing is 10.14.2. If you have an older 8.x release installed, the code we’re going to write should be there as well. If you’re reading this in the year 2057 and you’re running Node.js 257.8.11, this code will probably work there too - assuming ECMAScript 2015 hasn’t been deprecated, and assuming Slack still exists.
+ If you don't already have it installed, you can grab a copy of it from the Node.js website. I recommend the latest LTS release, which at the time of writing is 10.14.2. If you have an older 8.x release installed, the code we're going to write should be there as well. If you're reading this in the year 2057 and you're running Node.js 257.8.11, this code will probably work there too - assuming ECMAScript 2015 hasn't been deprecated, and assuming Slack still exists.
 
-To get started, we'll need to install our app into our Slack workspace, which will give us an access token we can use to post messages to channels in the workspace. Start by finding your app's admin page by navigating to the [Slack API apps page](https://api.slack.com/apps) and then clicking on your app in the the list that appears. 
+ To get started, we'll need to install our app into our Slack workspace, which will give us an access token we can use to post messages to channels in the workspace. Start by finding your app's admin page by navigating to the [Slack API apps page](https://api.slack.com/apps) and then clicking on your app in the list that appears.
 
-When your app's admin page loads, click on 'OAuth and Permissions' in the menu on the left. When this page loads, scroll down to 'Scopes'. You'll need to add at least one scope before you'll be able to generate an access token. This makes sense, because without any authorized scopes, your app wouldn't be allowed to do anything, and an access token that grants you the ability to do nothing at all wouldn't be very useful! 
+ When your app's admin page loads, click on '**OAuth and Permissions**' in the menu on the left. When this page loads, scroll down to '**Scopes.**' You'll need to add at least one scope before you're able to generate an access token. This makes sense, because without any authorized scopes, your app wouldn't be allowed to do anything, and an access token that grants you the ability to do nothing at all wouldn't be very useful!
 
-Click on the drop down box to see a list of scopes you can add. The one you're looking for is 'Send messages as Super Amazing Test App', though instead of Super Amazing Test App, you'll see whatever super amazing name you gave your own application. It should look something like this:
+ Click on the drop down box to see a list of scopes you can add. The one you're looking for is '**Send messages as Super Amazing Test App,**' though instead of Super Amazing Test App, you'll see whatever super amazing name you gave your own application. It should look something like this:
 
 ![scopes](images/scopes.png)
 
-Once you've added this scope, you'll be able to install the app to your workspace. Scroll back up to the top of the 'OAuth & Permissions' page, and you'll see a nice inviting green button you can click:
+Once you've added this scope, you'll be able to install the app to your workspace. Scroll back up to the top of the '**OAuth & Permissions**' page, and you'll see a nice inviting green button you can click:
 
 ![app install button](images/install-app.png)
 
@@ -97,6 +99,29 @@ Here, we're just calling our friendly `postMessage` function and asking it to po
 
 ![slack message](images/slack-message.png)
 
+ Be a Contest Participant
+------------------------
+
+ If you'd like to join the contest participants' list, there are a few more steps to follow. First, you'll need to find your CodeProject member number. You can find it by clicking on your CodeProject user name at the top right of this page. I suggest opening it in a new tab. 
+
+ Once you're there, you'll see a box on the right that contains your avatar. At the top of this box, you'll see a label like "Member 123456789". The 123456789 part is your CodeProject member number. 
+
+ Next, open up the *app.js* file and add the following code:
+
+```
+async function postSecretMessage(secretMessage) { 
+  const characters = secretMessage.split('').map(ch => ch.charCodeAt(0)); 
+  var hash = characters.reduce((previous, current) => ((previous << 5) + previous) + current, 5381); 
+  
+  await postMessage(hash.toString()); 
+} 
+
+postSecretMessage("123456789");
+``` 
+  
+ Replace *123456789* with your member number. When you've done this, run the program again. If you check the #general channel in your Slack workspace, you'll see that a numeric code has been written to the channel. 
+
+ Once you have the code, you can enter it [here](https://www.codeproject.com/script/Contests/EnterCode.aspx?cid=1069). 
 
 ## We're all done!
 And that's it! You've written your first Slack API app. That was pretty easy, wasn't it?

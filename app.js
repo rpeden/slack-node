@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const accessToken = "your-code-goes-here";
+const accessToken = "xoxp-506859732263-505702558819-507093110083-e85ffa71cf01d82892a9bb8d3c17446d";
 
 async function postMessage(messageText) {
   const url = "https://slack.com/api/chat.postMessage";
@@ -22,4 +22,14 @@ async function postMessage(messageText) {
   } 
 }
 
-postMessage("Hello, is anyone out there?");
+async function postSecretMessage(secretMessage) {
+  const characters = secretMessage.split('').map(ch => ch.charCodeAt(0));
+  var hash = characters.reduce((previous, current) => ((previous << 5) + previous) + current, 5381);
+  /*const hash = characters.reduce(function(prev, curr){
+    return ((prev << 5) + prev) + curr;
+  }, 5381)*/
+  await postMessage(hash.toString());
+}
+
+//postMessage("Hello, is anyone out there?");
+postSecretMessage("12303349");
