@@ -1,6 +1,7 @@
 # Writing to a Slack Channel - Node.js Edition
 **Note**: This tutorial is part of CodeProject's [Slack API Challenge](https://www.codeproject.com/Competitions/1069/Slack-API-Challenge.aspx). 
 
+
  In this article, we'll be creating a simple Node.js application that can write to a Slack channel. If you haven't completed [the first tutorial in this series](https://www.codeproject.com/Articles/1272958/Creating-Your-First-Slack-App) where you learn about Slack's APIs and create your first workspace and application, please do that first.
 
  To keep things nice and simple, we're going to be using Slack's Web API. So all we need to do to write to a Slack channel is make HTTP POST requests. Since this functionality is built into Node's standard library, creating our app will be quick and easy.
@@ -99,8 +100,7 @@ Here, we're just calling our friendly `postMessage` function and asking it to po
 
 ![slack message](images/slack-message.png)
 
- Be a Contest Participant
-------------------------
+## Be a Contest Participant
 
  If you'd like to join the contest participants' list, there are a few more steps to follow. First, you'll need to find your CodeProject member number. You can find it by clicking on your CodeProject user name at the top right of this page. I suggest opening it in a new tab. 
 
@@ -126,7 +126,7 @@ postSecretMessage("123456789");
 ## We're all done!
 And that's it! You've written your first Slack API app. That was pretty easy, wasn't it?
 
-Now for the really good news: you can officially add 'Slack API Developer' to your LinkedIn profile, and look forward to an avalanche of messages from recruiters telling you that you're the perfect candidate for a role they're trying to fill. 
+Now for the really good news: you can officially add 'Slack API Developer' to your LinkedIn profile, and look forward to an avalanche of messages from recruiters telling you that you're the perfect candidate for a role they're trying to fill!
 
 
 
