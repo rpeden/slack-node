@@ -1,4 +1,4 @@
-# Writing to a Slack Channel - Node.js Edition
+# Writing to a Slack Channel - Node.js Edition 
 **Note**: This tutorial is part of CodeProject's [Slack API Challenge](https://www.codeproject.com/Competitions/1069/Slack-API-Challenge.aspx). 
 
 
